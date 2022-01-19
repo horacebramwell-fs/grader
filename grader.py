@@ -19,20 +19,25 @@ class Grader:
             self.calculate_letter_grade()
     
     def calculate_letter_grade(self):
-        if (self.grade >= 90):
-            self.letter_grade = "A"
-        elif (self.grade >= 80):
-            self.letter_grade = "B"
-        elif (self.grade >= 70):
-            self.letter_grade = "C"
-        elif (self.grade >= 60):
-            self.letter_grade = "D"
-        else:
-            self.letter_grade = "F"
-        self.print_grade()
+        #if grade is greater than 100 or less than 0 then it is invalid 
+        if (self.grade > 100) or (self.grade < 0):
+            return "Invalid Grade" + self.__init__()
+        #if grade is between 0 and 100 then it is valid
+        elif (self.grade >= 0) and (self.grade <= 100):
+            if (self.grade >= 90):
+                return "A"
+            elif (self.grade >= 80):
+                return "B"
+            elif (self.grade >= 70):
+                return "C"
+            elif (self.grade >= 60):
+                return "D"
+            else:
+                return "F"
 
     def print_grade(self):
-        print("{0}'s grade in {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.grade, self.letter_grade))
+        print("{0}'s grade in {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.grade, self.calculate_letter_grade()))
 
 
 grader = Grader()
+grader.print_grade()
