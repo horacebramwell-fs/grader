@@ -4,39 +4,32 @@ class Grader:
     def __init__(self):
         self.student_name = input("What is the student's name? : ")
         self.assignment_name = input("What is the assignment name? : ")
-        self.grade = float(input("What is the score for the assignment? : "))
+        self.score = float(input("What is the score for the assignment? : "))
         self.check_score()
 
     def check_score(self):
-        if (type(self.grade) != float):
+    # if score is greater than 100 or less than 0 then it is invalid
+        if (self.score > 100) or (self.score < 0):
             print("Invalid score. Please try again.")
-            self.grade = float(input("What is the score for the assignment? : "))
-        elif (self.grade < 0 or self.grade > 100):
-            print("Invalid score. Please try again.")
-            self.grade = float(input("What is the score for the assignment? : "))
+            self.score = float(input("What is the score for the assignment? : "))
+            self.check_score()   
         else:
-            self.grade = self.grade
             self.print_grade()
-    
+        
     def get_grade(self):
-        #if grade is greater than 100 or less than 0 then it is invalid 
-        if (self.grade > 100) or (self.grade < 0):
-            return "Invalid score" + sys.exit()
-        #if grade is between 0 and 100 then it is valid
-        elif (self.grade >= 0) and (self.grade <= 100):
-            if (self.grade >= 90):
-                return "A"
-            elif (self.grade >= 80):
-                return "B"
-            elif (self.grade >= 70):
-                return "C"
-            elif (self.grade >= 60):
-                return "D"
-            else:
-                return "F"
+        if (self.score >= 90):
+            return "A"
+        elif (self.score >= 80):
+            return "B"
+        elif (self.score >= 70):
+            return "C"
+        elif (self.score>= 60):
+            return "D"
+        else:
+            return "F"
 
     def print_grade(self):
-        print("{0}'s score on {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.grade, self.get_grade()))
+        print("{0}'s score on {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.score, self.get_grade()))
 
 
 grader = Grader()

@@ -32,12 +32,9 @@ class Grader {
     rl.question('What is the score for the assignment? ', (answer) => {
       this.score = answer;
 
-      // if score is not a number, return invalid score
-      if (isNaN(this.score)) {
-        console.log('Invalid. Please try again.');
-        this.askScore();
-      } else if (this.score > 100 || this.score < 0) {
-        console.log('Invalid. Please try again.');
+      // if score greater than 100 or less than 0, ask for score again
+      if (this.score > 100 || this.score < 0) {
+        console.log('Invalid score. Please try again.');
         this.askScore();
       } else {
         this.printGrade();
