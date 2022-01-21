@@ -4,24 +4,24 @@ class Grader:
     def __init__(self):
         self.student_name = input("What is the student's name? : ")
         self.assignment_name = input("What is the assignment name? : ")
-        self.grade = float(input("What is score for the assignment? : "))
-        self.get_grade()
+        self.grade = float(input("What is the score for the assignment? : "))
+        self.check_score()
 
-    def get_grade(self):
+    def check_score(self):
         if (type(self.grade) != float):
-            print("Invalid grade. Please try again.")
-            sys.exit()
+            print("Invalid score. Please try again.")
+            self.grade = float(input("What is the score for the assignment? : "))
         elif (self.grade < 0 or self.grade > 100):
-            print("Invalid grade. Please try again.")
-            sys.exit()
+            print("Invalid score. Please try again.")
+            self.grade = float(input("What is the score for the assignment? : "))
         else:
             self.grade = self.grade
             self.print_grade()
     
-    def calculate_letter_grade(self):
+    def get_grade(self):
         #if grade is greater than 100 or less than 0 then it is invalid 
         if (self.grade > 100) or (self.grade < 0):
-            return "Invalid Grade" + sys.exit()
+            return "Invalid score" + sys.exit()
         #if grade is between 0 and 100 then it is valid
         elif (self.grade >= 0) and (self.grade <= 100):
             if (self.grade >= 90):
@@ -36,7 +36,7 @@ class Grader:
                 return "F"
 
     def print_grade(self):
-        print("{0}'s score on {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.grade, self.calculate_letter_grade()))
+        print("{0}'s score on {1} is {2} ({3})".format(self.student_name, self.assignment_name, self.grade, self.get_grade()))
 
 
 grader = Grader()
