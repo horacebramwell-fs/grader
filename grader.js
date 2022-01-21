@@ -8,12 +8,7 @@ const rl = readline.createInterface({
 // create a class called Grader
 class Grader {
   constructor() {
-    // ask for the student's name
     this.askName();
-    // ask for the assignment name
-    this.askAssignment();
-    // ask for the assignment score
-    this.askScore();
   }
 
   // ask for the student's name
@@ -44,7 +39,7 @@ class Grader {
   calculateGrade() {
     // if score is greater than 100 or less than 0, return invalid score
     if (this.score > 100 || this.score < 0) {
-      return 'Invalid score. Please try again.';
+      return 'Invalid. Please try again.';
     }
     // if score is between 0 and 100, return the letter grade
     if (this.score >= 90) {
@@ -67,15 +62,10 @@ class Grader {
 
   // print the student name, assignment name, and grade
   printGrade() {
-    console.log(
-      `${this.name}'s grade for ${
-        this.assignment
-      } is a ${this.calculateGrade()}.`
-    );
+    console.log(`${this.name}'s score on ${this.assignment} is ${this.score} (${this.calculateGrade()})`);
     rl.close();
   }
 }
 
 // create a new instance of the class
 const newGrader = new Grader();
-
